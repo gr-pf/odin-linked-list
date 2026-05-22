@@ -91,7 +91,7 @@ export class LinkedList {
     let currentIndex = 0;
     while (current) {
       if (current.value === value) {
-        return true;
+        return currentIndex;
       }
       current = current.nextNode;
       currentIndex++;
