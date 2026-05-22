@@ -25,7 +25,7 @@ export class LinkedList {
       this.headNode = newNode;
       this.tailNode = newNode;
     } else {
-      newNode.nextNode = this.head;
+      newNode.nextNode = this.headNode;
       this.headNode = newNode;
     }
     this.sizeList++;
