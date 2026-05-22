@@ -13,7 +13,7 @@ export class LinkedList {
       this.headNode = newNode;
       this.tailNode = newNode;
     } else {
-      this.tail.nextNode = newNode;
+      this.tailNode.nextNode = newNode;
     }
     this.sizeList++;
   }
