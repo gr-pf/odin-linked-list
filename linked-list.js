@@ -112,4 +112,74 @@ export class LinkedList {
     }
     return llString + "null";
   }
+
+  insertAt(index, ...values) {
+    if (index >= this.sizeList || index < 0) {
+      throw new RangeError(`Index ${index} is out of bound!`);
+    }
+
+    if (index === 0) {
+      const currentNext = this.headNode;
+      this.headNode = new Node(values[0]);
+      let current = this.headNode;
+
+      for (let i = 1; i < values.length; i++) {
+        const newNode = new Node(values[i]);
+        current.nextNode = newNode;
+        current = newNode;
+      }
+
+      current.nextNode = currentNext;
+    } else if (index === this.sizeList - 1) {
+      let current = this.tailNode;
+
+      for (let i = 0; i < values.length; i++) {
+        const newNode = new Node(values[i]);
+        current.nextNode = newNode;
+        current = newNode;
+      }
+
+      this.tailNode = current;
+    } else {
+      let currentIndex = 0;
+
+      while (currentIndex !== index - 1) {
+        current = current.nextNode;
+        currentIndex++;
+      }
+      const currentNext = current;
+
+      for (let i = 0; i < values.length; i++) {
+        const newNode = new Node(values[i]);
+        current.nextNode = newNode;
+        current = newNode;
+      }
+      current.nextNode = currentNext;
+    }
+    this.sizeList += values.length;
+  }
+
+  removeAt(index) {
+    if (index >= this.sizeList || index < 0) {
+      throw new RangeError(`Index ${index} is out of bound!`);
+    }
+
+    if (index === 0) {
+      this.pop();
+      return;
+    }
+
+    let current = this.headNode;
+    let currentIndex = 0;
+    let prev;
+    while (currentIndex !== index) {
+      prev = current;
+      current = current.nextNode;
+      currentIndex++;
+    }
+    prev.nextNode = prev.nextNode.nextNode;
+    if (!prev.nextNode) {
+      this.tailNode = prev;
+    }
+  }
 }
