@@ -69,6 +69,8 @@ export class LinkedList {
     if (!this.headNode) {
       this.tailNode = null;
       this.sizeList = 0;
+    } else {
+      this.sizeList--;
     }
     return popNode;
   }
