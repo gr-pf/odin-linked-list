@@ -130,24 +130,25 @@ export class LinkedList {
       }
 
       current.nextNode = currentNext;
-    } else if (index === this.sizeList - 1) {
-      let current = this.tailNode;
+      // } else if (index === this.sizeList - 1) {
+      //   let current = this.tailNode;
 
-      for (let i = 0; i < values.length; i++) {
-        const newNode = new Node(values[i]);
-        current.nextNode = newNode;
-        current = newNode;
-      }
+      //   for (let i = 0; i < values.length; i++) {
+      //     const newNode = new Node(values[i]);
+      //     current.nextNode = newNode;
+      //     current = newNode;
+      //   }
 
-      this.tailNode = current;
+      //   this.tailNode = current;
     } else {
       let currentIndex = 0;
+      let current = this.headNode;
 
       while (currentIndex !== index - 1) {
         current = current.nextNode;
         currentIndex++;
       }
-      const currentNext = current;
+      const currentNext = current.nextNode;
 
       for (let i = 0; i < values.length; i++) {
         const newNode = new Node(values[i]);
@@ -181,5 +182,7 @@ export class LinkedList {
     if (!prev.nextNode) {
       this.tailNode = prev;
     }
+
+    this.sizeList--;
   }
 }
