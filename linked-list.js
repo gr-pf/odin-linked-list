@@ -7,7 +7,7 @@ export class LinkedList {
     this.sizeList = 0;
   }
 
-  apppend(value) {
+  append(value) {
     const newNode = new Node(value);
     if (this.sizeList === 0) {
       this.headNode = newNode;
